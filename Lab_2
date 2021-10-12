@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#define size 10
+void push();
+void pop();
+bool isFull();
+bool isEmpty();
+void display();
+
+int A[size];
+int top=-1;
+int main()
+{
+    int choice;
+    while(1){
+        printf("Menu: \n");
+        printf("1. push \n2.pop \n3.display \n4.exit \n");
+        printf("Enter the choice number: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+                push();
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4: 
+                exit(0);
+        }
+    }
+    return 0;
+}
+
+void push(){
+    printf("Enter the data to be fed into the stack(press -1 when finished): \n");
+    while(top<size){
+        if(!isFull()){
+            top=top+1;
+            scanf("%d", &A[top]);
+            if(A[top]==-1){
+                break;
+            }
+        }else{
+            printf("The stack is full \n");
+            break;
+        }
+    }
+}
+
+void pop(){
+    if(isEmpty()){
+        printf("The stack is empty");
+    }else{
+        printf("Popping %d from the stack\n", A[top]);
+        top=top-1;
+    }
+}
+
+bool isFull(){
+    if(top==size){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool isEmpty(){
+    if(top==-1){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void display(){
+    int i;
+    printf("Final stack data:\n");
+    for(i=top;i>=0;i--){
+        printf("%d \n", A[i]);
+    }
+}
