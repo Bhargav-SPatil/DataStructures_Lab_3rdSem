@@ -1,0 +1,62 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <ctype.h>
+#include <stdbool.h>
+#include <string.h>
+
+#define size 20
+void push(char expr);
+char pop();
+bool isEmpty();
+void conversion(char expression[], int x);
+
+char expression[size];
+char postfix[size];
+char stack[size];
+int top=-1, n;
+
+int main(){
+    printf("Enter the expression: ");
+    scanf("%s", expression);
+    n=strlen(expression);
+    conversion(expression, n);
+    return 0;
+}
+
+void push(char expr){
+    top++;
+    stack[top]=expr;
+}
+
+char pop(){
+    return(stack[top--]);
+}
+
+bool isEmpty(){
+    if(top==-1)
+        return true;
+    else
+        return false;
+}
+
+void conversion(char expr[], int x){
+    int i,k=0;
+    for(i=0; i<x; i++){
+        if(isalnum(expr[i]))
+        postfix[k++] = expr[i];
+        else
+        push(expr[i]);
+    }
+    while(!isEmpty()){
+        postfix[k++] = pop();
+    }
+    postfix[k]='\0';
+    printf("%s", postfix);
+}
