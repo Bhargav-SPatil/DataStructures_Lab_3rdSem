@@ -1,0 +1,85 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#define size 10
+
+int A[size];
+int f=-1, r=-1;
+
+bool isEmpty(){
+    if(f==-1 && r==-1)
+    return true;
+    else
+    return false;
+}
+
+bool isFull(){
+    if(r==size-1)
+    return true;
+    else
+    return false;
+}
+
+void enqueue(int x){
+    if(isFull()){
+        printf("Queue is full!");
+    }else if(isEmpty()){
+        r=f=0;
+        A[r]=x;
+    }else
+    A[++r]=x;
+}
+
+void dequeue(){
+    if(isEmpty())
+    printf("Queue is Empty!");
+    else if(r==f)
+    f=r=-1;
+    else
+    f++;
+}
+
+void display(){
+    int i;
+    if(isEmpty())
+    printf("Queue is Empty! \n");
+    else{
+        printf("The Queue is: \n");
+        for(i=f; i<=r; i++)
+        printf("%d \n", A[i]);
+    }
+}
+
+int main(){
+    int c, x;
+    while(1){
+    printf("Please make your choice: ");
+    printf("1. Enqueue \t\t 2. Dequeue \t\t 3. Display \t\t 4. Exit \n");
+    scanf("%d", &c);
+    switch(c){
+        case 1:{
+            printf("Enter the value to be added to the queue: ");
+            scanf("%d", &x);
+            enqueue(x);
+        }
+        break;
+        case 2: dequeue();
+        break;
+        case 3: display();
+        break;
+        case 4: exit(0);
+        break;
+        default: printf("Please enter a valid choice");
+        break;
+    }
+    }
+    return 0;
+}
