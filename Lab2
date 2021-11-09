@@ -38,13 +38,33 @@ bool isEmpty(){
         return false;
 }
 
+int priority(char symbol){
+    if(symbol=='^')
+    return 3;
+    else if(symbol == '*' || symbol == '/')
+    return 2;
+    else if(symbol == '+' || symbol == '-')
+    return 1;
+}
+
 void conversion(char expr[], int x){
     int i,k=0;
     for(i=0; i<x; i++){
-        if(isalnum(expr[i]))
-        postfix[k++] = expr[i];
-        else
+        if(expr[i] == '(')
         push(expr[i]);
+        else{
+            if(isalnum(expr[i]))
+            postfix[k++] = expr[i];
+            else if(expr[i]==')'){
+                while(stack[top] != '(')
+                postfix[k++] = pop();
+                pop();                
+            }else{
+                while(priority(stack[top]) >= priority(expr[i]))
+                postfix[k++] = pop();
+                push(expr[i]);
+            }
+        }
     }
     while(!isEmpty()){
         postfix[k++] = pop();
