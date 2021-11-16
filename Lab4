@@ -84,3 +84,41 @@ int main(){
     }
     return 0;
 }
+
+//OUTPUT
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 10
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 20
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 30
+Queue is full! 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+3
+The Queue is: 
+10 
+20 
+30 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+2
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+3
+The Queue is: 
+20 
+30 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 40
+Queue is full! 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+3
+The Queue is: 
+20 
+30 
+40 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+4
+
