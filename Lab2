@@ -45,6 +45,7 @@ int priority(char symbol){
     return 2;
     else if(symbol == '+' || symbol == '-')
     return 1;
+    else return 0;
 }
 
 void conversion(char expr[], int x){
@@ -70,5 +71,5 @@ void conversion(char expr[], int x){
         postfix[k++] = pop();
     }
     postfix[k]='\0';
-    printf("%s", postfix);
+    printf("Postfix expression is: %s", postfix);
 }
