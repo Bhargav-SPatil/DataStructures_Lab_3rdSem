@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#define size 10
+#define size 3
 void push();
 void pop();
 bool isFull();
@@ -36,11 +36,14 @@ int main()
 }
 
 void push(){
+    int value;
     printf("Enter the data to be fed into the stack(press -1 when finished): \n");
     while(top<size){
         if(!isFull()){
             top=top+1;
-            scanf("%d", &A[top]);
+            scanf("%d", &value);
+            if(value != -1)
+            A[top]=value;
             if(A[top]==-1){
                 break;
             }
@@ -61,7 +64,7 @@ void pop(){
 }
 
 bool isFull(){
-    if(top==size){
+    if(top==size-1){
         return true;
     }else{
         return false;
@@ -83,3 +86,4 @@ void display(){
         printf("%d \n", A[i]);
     }
 }
+
