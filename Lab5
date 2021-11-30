@@ -93,3 +93,41 @@ int main(){
     }
     return 0;
 }
+
+
+/*
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 5
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 2
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 1
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 4
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 3
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+3
+The Queue is: 
+1 
+2 
+3 
+4 
+5 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+2
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+3
+The Queue is: 
+2 
+3 
+4 
+5 
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+4
+*/
