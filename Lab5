@@ -21,9 +21,7 @@ bool isFull(){
 }
 
 void enqueue(int x){
-    if(isFull()){
-        printf("Queue is full!");
-    }else if(isEmpty()){
+    if(isEmpty()){
         r=f=0;
         pr_queue[r]=x;
     }else{
@@ -31,11 +29,15 @@ void enqueue(int x){
         check(x);
         
     }
+
+    if(isFull()){
+        printf("Queue is full! \n");
+    }
 }
 
 void dequeue(){
     if(isEmpty())
-    printf("Queue is Empty!");
+    printf("Queue is Empty! \n");
     else if(r==f)
     f=r=-1;
     else
@@ -43,17 +45,19 @@ void dequeue(){
 }
 
 void check(int x){
-    int i=0, p=1000;
+    int i=0, p=r;
     for(i=f; i<r; i++){
         if(x<=pr_queue[i]){
             p=i;
+            
+            for(i=r-1; i>=p; i--)
+                pr_queue[i+1] = pr_queue[i];
             break;
         }
     }
-
-    for(i=r-1; i>=p; i--)
-        pr_queue[i+1] = pr_queue[i];
+    
     pr_queue[p] = x;
+
 }
 
 void display(){
@@ -76,9 +80,13 @@ int main(){
     scanf("%d", &c);
     switch(c){
         case 1:{
-            printf("Enter the value to be added to the queue: ");
-            scanf("%d", &x);
-            enqueue(x);
+            if(isFull()){
+                printf("Queue is full! \n");
+            }else{
+                printf("Enter the value to be added to the queue: ");
+                scanf("%d", &x);
+                enqueue(x);
+            }
         }
         break;
         case 2: dequeue();
@@ -94,40 +102,40 @@ int main(){
     return 0;
 }
 
-
 /*
-Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
-1
-Enter the value to be added to the queue: 5
-Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
-1
-Enter the value to be added to the queue: 2
-Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
-1
-Enter the value to be added to the queue: 1
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 1
 Enter the value to be added to the queue: 4
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 1
-Enter the value to be added to the queue: 3
+Enter the value to be added to the queue: 2
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 9
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 6
+Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
+1
+Enter the value to be added to the queue: 1
+Queue is full! 
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 3
 The Queue is: 
 1 
 2 
-3 
 4 
-5 
+6 
+9 
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 2
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 3
 The Queue is: 
 2 
-3 
 4 
-5 
+6 
+9 
 Please make your choice: 1. Enqueue              2. Dequeue              3. Display              4. Exit 
 4
 */
