@@ -10,17 +10,18 @@ typedef struct node{
 
 node *head;
 
-node create_node(){
+node* create_node(int x){
     node *new_node;
-    new_node = (struct node *)malloc(sizeof(struct node));
+    new_node = (struct node *)malloc(sizeof(node));
     new_node -> data = x;
     new_node -> next = NULL;
     return new_node;
 }
 
 
-void push(int x){
-    new_node = create_node();
+void at_beg(int x){
+    node *new_node;
+    new_node = create_node(x);
     if(head==NULL)
     head = new_node;
     else{
@@ -29,8 +30,9 @@ void push(int x){
     }
 }
 
-void append(int x){
-    new_node = create_node();
+void at_end(int x){
+    node *new_node;
+    new_node = create_node(x);
     node *temp;
     if(head == NULL)
     head = new_node;
@@ -43,7 +45,11 @@ void append(int x){
 }
 
 void at_position(int x, int pos){
-    new_node = create_node()
+    node *new_node;
+    int i;
+    new_node = create_node(x);
+    node *temp;
+    temp = head;
 
     for(i=1; i < (pos-1); i++)
     temp = temp -> next;
@@ -54,36 +60,39 @@ void at_position(int x, int pos){
 
 void display(){
     node *temp;
-    while(temp -> next != null){
+    temp = head;
+    printf("The linked list is: \n");
+    while(temp != NULL){
         printf("%d \n", temp->data);
         temp = temp->next;
     }
 }
 
 int main(){
-    int c, x;
+    int c, x, pos;
     while(1){
-    printf("Please make your choice: ");
-    printf("1. Insert at beginning \t\t 2. Insert at end \t\t 3. Insert at any position \t\t 
-            4. Display \t\t 4. Exit \n");
+    printf("Please make your choice: \n");
+    printf("1. Insert at beginning \t\t 2. Insert at end \t\t 3. Insert at any position \t\t 4. Display \t\t 5. Exit \n");
     scanf("%d", &c);
     switch(c){
         case 1:{            
             printf("Enter the value to be added to the list: ");
             scanf("%d", &x);
-            push(x);            
+            at_beg(x);            
         }
         break;
         case 2:{            
             printf("Enter the value to be added to the list: ");
             scanf("%d", &x);
-            append(x);
+            at_end(x);
         }
         break;
         case 3: {            
             printf("Enter the value to be added to the list: ");
             scanf("%d", &x);
-            at_position();
+            printf("Enter the position at which the data is to be added: ");
+            scanf("%d", &pos);
+            at_position(x, pos);
         }
         break;
         case 4:        
