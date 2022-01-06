@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+
+typedef struct node{
+    int data;
+    struct node *next;
+}node;
+
+node *head;
+
+node* create_node(int x){
+    node *new_node;
+    new_node = (struct node *)malloc(sizeof(node));
+    new_node -> data = x;
+    new_node -> next = NULL;
+    return new_node;
+}
+
+void push(int x){
+    node *new_node;
+    new_node = create_node(x);
+    node *temp;
+    if(head == NULL)
+    head = new_node;
+    else{
+        temp = head;
+        while((temp -> next) != NULL)
+        temp = temp -> next;
+        temp -> next = new_node;
+    }
+}
+
+void pop(){
+    node *temp = head, *prev;
+    if(head==NULL){
+        printf("List is Empty");
+        return;
+    }
+    else if(head -> next == NULL){
+        free(head);
+        head = NULL;
+        return;
+    }else{
+        while(temp -> next != NULL){
+            prev = temp;
+            temp = temp -> next;
+        }
+        free(temp);
+        prev -> next = NULL;
+    }
+}
+
+void display(){
+    node *temp;
+    temp = head;
+    if(head == NULL)
+    printf("The List is Empty!!");
+    else{
+        printf("The linked list is: \n");
+        while(temp != NULL){
+            printf("%d \n", temp->data);
+            temp = temp->next;
+        }
+    }
+}
+
+
+int main(){
+    int choice, x;
+    while(1){
+        printf("Menu: \n");
+        printf("1. Push \n2.Pop \n3.Display \n4.Exit \n");
+        printf("Enter the choice number: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+                printf("Enter the value to be added to the queue: ");
+                scanf("%d", &x);
+                push(x);
+                break;
+            case 2:
+                pop();
+                break;
+            case 3:
+                display();
+                break;
+            case 4: 
+                exit(0);
+        }
+    }
+    return 0;
+}
