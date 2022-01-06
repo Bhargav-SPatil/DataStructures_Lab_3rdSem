@@ -35,12 +35,13 @@ void push(int x){
 void pop(){
     node *temp = head, *prev;
     if(head==NULL){
-        printf("List is Empty");
+        printf("Stack is Empty \n");
         return;
     }
     else if(head -> next == NULL){
         free(head);
         head = NULL;
+        printf("Element Popped \n");
         return;
     }else{
         while(temp -> next != NULL){
@@ -48,6 +49,7 @@ void pop(){
             temp = temp -> next;
         }
         free(temp);
+        printf("Element Popped \n");
         prev -> next = NULL;
     }
 }
@@ -56,7 +58,7 @@ void display(){
     node *temp;
     temp = head;
     if(head == NULL)
-    printf("The List is Empty!!");
+    printf("The Stack is Empty!! \n");
     else{
         printf("The linked list is: \n");
         while(temp != NULL){
@@ -70,13 +72,13 @@ void display(){
 int main(){
     int choice, x;
     while(1){
-        printf("Menu: \n");
+        printf("\nMenu: \n");
         printf("1. Push \n2.Pop \n3.Display \n4.Exit \n");
         printf("Enter the choice number: ");
         scanf("%d", &choice);
         switch(choice){
             case 1:
-                printf("Enter the value to be added to the queue: ");
+                printf("Enter the value to be added to the Stack: ");
                 scanf("%d", &x);
                 push(x);
                 break;
