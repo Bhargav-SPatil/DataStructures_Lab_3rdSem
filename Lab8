@@ -35,14 +35,16 @@ void enqueue(int x){
 void dequeue(){
     node *ptr;
     if(head==NULL)
-    printf("Queue is Empty");
+    printf("Queue is Empty \n");
     else if(head -> next == NULL){
         free(head);
         head = NULL;
+        printf("Element removed from Queue \n");
     }else{
         ptr = head;
         head = head -> next;
         free(ptr);
+        printf("Element removed from Queue \n");
     }
 }
 
@@ -50,7 +52,7 @@ void display(){
     node *temp;
     temp = head;
     if(head == NULL)
-    printf("The List is Empty!!");
+    printf("The Queue is Empty!!\n");
     else{
         printf("The linked list is: \n");
         while(temp != NULL){
@@ -64,7 +66,7 @@ void display(){
 int main(){
     int choice, x;
     while(1){
-        printf("Menu: \n");
+        printf("\nMenu: \n");
         printf("1.Enqueue \n2.Dequeue \n3.Display \n4.Exit \n");
         printf("Enter the choice number: ");
         scanf("%d", &choice);
