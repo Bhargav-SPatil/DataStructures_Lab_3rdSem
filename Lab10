@@ -1,0 +1,118 @@
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
+
+int no_frnds = 0;
+typedef struct node{
+    struct node *prev;
+    char data[20];
+    int mobile_no;
+    int no_likes;
+    struct node *next;
+}node;
+
+node *head;
+int count=0;
+
+node* create_node(char* name, int len, int mob_no, int likes){
+    node *new_node;
+    new_node = (struct node *)malloc(sizeof(node));
+    for(int i = 0; i < 20; i++){
+        new_node -> data[i] = name[i];
+    }
+    new_node -> mobile_no = mob_no;
+    new_node -> no_likes = likes;
+    new_node -> prev = NULL;
+    new_node -> next = NULL;
+    return new_node;
+}
+
+
+void at_beg(char* name, int len, int mob_no, int likes){
+    node *new_node;
+    new_node = create_node(name, len, mob_no, likes);
+    if(head==NULL)
+    head = new_node;
+    else{
+        new_node -> next = head;
+        head -> prev = new_node;
+        head = new_node;
+    }
+}
+
+void display(){
+    node *temp;
+    temp = head;
+    if(count == 0)
+    printf("Friends List is Empty!!");
+    else{
+        printf("Friends list : \n");
+        while(temp != NULL){
+            no_frnds++;
+            printf("Friend %d: \n", no_frnds);
+            printf("\t Name: %s \n", temp->data);
+            printf("\t Mobile No.: %d \n", temp -> mobile_no);
+            printf("\t Likes: %d \n", temp -> no_likes);
+            temp = temp->next;
+        }
+    }
+}
+
+void max_likes(){
+    int max_no_likes = 0, fMobNo;
+    char fName[20];
+    node *temp;
+    temp = head;
+    printf("%d \n", count);
+    for(int i = 0; i < count; i++){
+        if((temp -> no_likes) > max_no_likes){
+            max_no_likes = temp -> no_likes;
+            for(int j = 0; j < 20; j++){
+                fName[j] = temp -> data[j];
+            }
+            fMobNo = temp -> mobile_no;
+        }
+        temp = temp -> next;
+    }
+    
+    printf("\nThe details of Friend with hishest number of likes is: \n");
+    printf("Name: %s \n", fName);
+    printf("No of likes: %d \n", max_no_likes);
+    printf("Mobile No.: %d \n", fMobNo);
+}
+
+int main(){
+    int c1, len, mob_no, likes;
+    char name[20];
+    char del_name[20];
+    while(1){
+    printf("\nPlease make your choice: \n");
+    printf("1. Add a friend \t\t 2. Display Friends list \t\t 3. Friend with Max Likes \t\t 4. Exit \n");
+    scanf("%d", &c1);
+    switch(c1){
+        case 1:{        
+            printf("Enter the name of the friend: ");
+            scanf("%s", name);
+            len = strlen(name);
+            printf("Enter the mobile no.: ");
+            scanf("%d", &mob_no);
+            printf("Likes: ");
+            scanf("%d", &likes);
+            at_beg(name, len, mob_no, likes);  
+            count++;
+        }
+        break;
+        case 2: display();
+        break;
+        case 3: max_likes();
+        break;
+        case 4: exit(0);
+        default: printf("Please enter a valid choice");
+        break;
+        }
+    }
+    
+    return 0;
+}
