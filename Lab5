@@ -73,23 +73,15 @@ int main(){
     while(1){
     printf("Please make your choice: \n");
     printf("1. Insert at beginning \t\t 2. Insert at end \t\t 3. Insert at any position \t\t 4. Display \t\t 5. Exit \n");
-    scanf("%d", &c);
+    scanf("%d", &c);            
+    printf("Enter the value to be added to the list: ");
+    scanf("%d", &x);
     switch(c){
-        case 1:{            
-            printf("Enter the value to be added to the list: ");
-            scanf("%d", &x);
-            at_beg(x);            
-        }
+        case 1: at_beg(x);
         break;
-        case 2:{            
-            printf("Enter the value to be added to the list: ");
-            scanf("%d", &x);
-            at_end(x);
-        }
+        case 2: at_end(x);
         break;
-        case 3: {            
-            printf("Enter the value to be added to the list: ");
-            scanf("%d", &x);
+        case 3: {
             printf("Enter the position at which the data is to be added: ");
             scanf("%d", &pos);
             at_position(x, pos);
